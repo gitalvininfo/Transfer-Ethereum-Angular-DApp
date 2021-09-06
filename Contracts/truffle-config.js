@@ -4,7 +4,10 @@ var mnemonic = process.env.MNENOMIC;
 // var privateKey = 'YOUR KEY';
 
 const address = "0xe07Cdeade8a9A55068B2AC599e2E810FC7389423";
-const privateKey = "0x497d644adc6a2149ce16d7419ce339c6822798a03501bd3dd4a5c3f4dda8768e";
+// const privateKey = "0x497d644adc6a2149ce16d7419ce339c6822798a03501bd3dd4a5c3f4dda8768e";
+
+const privateKey = "038241a2795a2b7be135f051744749f2c25daf49fb97d7d9a159f7d335c4fa84";
+
 const infuraKey = "7c1447319c004138ae86e4bf861b554b";
 
 module.exports = {
@@ -16,8 +19,8 @@ module.exports = {
     },
     rinkeby: {
       provider: () =>
-        new HDWalletProvider(mnemonic, process.env.rinkeby.infura.io/v3/fcbcb2a5dc574c33be6baa5d697bcf20
-          ),
+        new HDWalletProvider(mnemonic, process.env.rinkeby.infura.io / v3 / fcbcb2a5dc574c33be6baa5d697bcf20
+        ),
       network_id: "4",
       skipDryRun: true
     },
@@ -31,10 +34,18 @@ module.exports = {
       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     },
+    // this is binance test
+    binancetest: {
+      provider: () => new HDWalletProvider(privateKey, `https://data-seed-prebsc-1-s1.binance.org:8545`),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
     mainnet: {
       provider: () =>
         new HDWalletProvider(mnemonic, "https://mainnet.infura.io/v3/"
-          ),
+        ),
       network_id: "1",
       gas: 4600000,
       gasPrice: 10000000000
